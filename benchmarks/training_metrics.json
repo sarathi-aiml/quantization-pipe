@@ -1,0 +1,27 @@
+{
+  "training_time_seconds": 7704.32,
+  "final_loss": 0.9960072806903294,
+  "epochs_completed": 2,
+  "learning_rate": 0.0002,
+  "lora_rank": 64,
+  "lora_alpha": 128,
+  "trainable_params": 190357504,
+  "total_params": 4882615296,
+  "trainable_pct": 3.9,
+  "batch_size": 4,
+  "grad_accum_steps": 4,
+  "effective_batch_size": 16,
+  "max_seq_length": 512,
+  "training_samples": 1000,
+  "val_samples": 100,
+  "total_training_samples_available": 3916,
+  "subsample_note": "Used 1000 of 3916 for practical training time on multimodal VL model",
+  "metrics": {
+    "train_runtime": 7704.1377,
+    "train_samples_per_second": 0.26,
+    "train_steps_per_second": 0.016,
+    "total_flos": 4.8768164560896e+16,
+    "train_loss": 0.9960072806903294,
+    "epoch": 2.0
+  }
+}

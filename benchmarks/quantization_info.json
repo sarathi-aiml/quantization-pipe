@@ -1,0 +1,20 @@
+{
+  "awq_attempt": {
+    "method": "AWQ_INT4",
+    "success": false,
+    "time_seconds": 0,
+    "output_dir": null,
+    "error": "ImportError: cannot import name 'PytorchGELUTanh' from 'transformers.activations' (/home/sarathi/miniconda3/envs/ft/lib/python3.10/site-packages/transformers/activations.py)"
+  },
+  "bnb_setup": {
+    "method": "bitsandbytes_NF4",
+    "success": true,
+    "time_seconds": 0.0,
+    "load_time_seconds": 91.94,
+    "output_dir": "/home/sarathi/Downloads/quantization-pipe/models/qwen25-vl-7b-bnb-nf4",
+    "vram_mb": 5661.9,
+    "total_params": 4692257792,
+    "error": null
+  },
+  "active_method": "bitsandbytes_NF4"
+}

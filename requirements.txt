@@ -1,0 +1,41 @@
+# Core ML
+torch>=2.1.0
+torchvision>=0.16.0
+transformers>=4.45.0
+accelerate>=0.34.0
+huggingface_hub>=0.25.0
+
+# Quantization
+autoawq>=0.2.0
+bitsandbytes>=0.43.0
+auto-gptq>=0.7.0
+optimum>=1.17.0
+
+# Fine-tuning
+peft>=0.13.0
+trl>=0.11.0
+datasets>=3.0.0
+
+# Evaluation metrics
+rouge-score>=0.1.2
+nltk>=3.9.0
+scikit-learn>=1.5.0
+
+# API serving
+fastapi>=0.115.0
+uvicorn>=0.31.0
+python-multipart>=0.0.12
+
+# Demo UI
+gradio>=4.44.0
+
+# Utilities
+psutil>=6.0.0
+gputil>=1.4.0
+matplotlib>=3.9.0
+seaborn>=0.13.0
+Pillow>=10.0.0
+
+# Vision model dependencies
+qwen-vl-utils>=0.0.2
+av>=13.0.0

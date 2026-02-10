@@ -1,0 +1,412 @@
+{
+  "phase": "6 -- Fine-tuned model evaluation",
+  "eval_test_cases": 5,
+  "base_model": {
+    "label": "Qwen2.5-VL-7B-Instruct (NF4, no LoRA)",
+    "load_time_seconds": 86.91,
+    "vram_post_load_mb": {
+      "allocated_mb": 5661.9,
+      "reserved_mb": 7494.0,
+      "max_allocated_mb": 7388.28
+    },
+    "vram_peak_mb": {
+      "allocated_mb": 5671.03,
+      "reserved_mb": 7508.0,
+      "max_allocated_mb": 7388.28
+    },
+    "eval_results": [
+      {
+        "test_id": "eval_medication_reconciliation",
+        "image": "eval_med_reconciliation.png",
+        "prompt": "Extract every medication with its exact dosage, frequency, and indication. Also list all comorbidities and relevant lab values from this medication reconciliation form.",
+        "response": "### Medications:\n1. **Metoprolol Tartrate**  \n   - Dosage: 50 mg PO BID  \n   - Frequency: Twice daily (BID)  \n   - Indication: Hypertension (HTN), Atrial Fibrillation (AF)\n\n2. **Warfarin**  \n   - Dosage: 5 mg PO QHS  \n   - Frequency: Once in the evening (QHS)  \n   - Indication: Atrial Fibrillation (AF), INR goal range 2.0-3.0\n\n3. **Furosemide**  \n   - Dosage: 80 mg PO QAM + 40 mg PO QPM  \n   - Frequency: Morning and evening (QAM, QPM)  \n   - Indication: Congestive Heart Failure (CHF)\n\n4. **Spironolactone**  \n   - Dosage: 25 mg PO QD  \n   - Frequency: Once daily (QD)  \n   - Indication: Congestive Heart Failure (CHF), Hyperkalemia (K+ 4.1 mEq/L)\n\n5. **Metformin**  \n   - Dosage: 1000 mg PO BID  \n   - Frequency: Twice daily (BID)  \n   - Indication: Diabetes Mellitus Type 2 (DM2), HbA1c 7.8%\n\n6. **Glipizide**  \n   - Dosage: 10 mg PO BID  \n   - Frequency: Twice daily (BID)  \n   - Indication: Diabetes Mellitus Type 2 (DM2)\n\n7. **Atorvastatin**  \n   - Dosage: 80 mg PO QHS  \n   - Frequency: Once in the evening (QHS)  \n   - Indication: Hyperlipidemia\n\n8. **Gabapentin**  \n   - Dosage: 300 mg PO TID  \n   - Frequency: Three times daily (TID)  \n   - Indication: Peripheral Neuropathy\n\n9. **Omeprazole**  \n   - Dosage: 20 mg PO QAM  \n   - Frequency: Morning (QAM)  \n   - Indication: Gastroesophageal Reflux Disease (GERD)\n\n10. **Albuterol**  \n    - Dosage: MDI 2 puffs Q4-6",
+        "latency_seconds": 24.5708,
+        "accuracy": {
+          "term_accuracy": 80.0,
+          "value_accuracy": 68.0,
+          "combined_accuracy": 74.0,
+          "terms_found": 16,
+          "terms_total": 20,
+          "terms_missed": [
+            "CKD",
+            "COPD",
+            "Tiotropium",
+            "anaphylaxis"
+          ],
+          "values_found": 17,
+          "values_total": 25,
+          "values_missed": [
+            "18 mcg",
+            "BNP 580",
+            "BUN 32",
+            "Cr 1.6",
+            "EF 35%",
+            "INR 2.4",
+            "PRN",
+            "eGFR 38"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 5671.03,
+          "reserved_mb": 7508.0,
+          "max_allocated_mb": 7388.28
+        }
+      },
+      {
+        "test_id": "eval_icu_flowsheet",
+        "image": "eval_icu_flowsheet.png",
+        "prompt": "Extract all ventilator settings, hemodynamic parameters, drip rates, lab values, intake/output totals, and diagnoses from this ICU flowsheet.",
+        "response": "Certainly! Here is the extracted information from the ICU flow sheet:\n\n### Ventilator Settings:\n- Mode: SIMV/PS\n- FiO2: 0.45\n- PEEP: 8 cmH2O\n- Vt: 450 mL\n- RR set: 14\n- PS: 10 cmH2O\n\n### Hemodynamics (06:00):\n- HR: 112 bpm (sinus tach)\n- MAP: 62 mmHg\n- CVP: 14 mmHg\n- ScvO2: 68%\n- Norepinephrine: 0.15 mcg/kg/min (titrating for MAP >65)\n- Vasopressin: 0.04 units/min (fixed dose)\n\n### Sedation / Analgesia:\n- Propofol: 30 mcg/kg/min\n- RASS: -3\n- Fentanyl: 75 mcg/hr\n- CPOT: 1\n\n### I&O (last 12h):\n- IN: 2850 mL\n- OUT: 1200 mL\n- NET: +1650 mL\n- UOP: 25 mL/hr (oliguric, considering CRRT)\n\n### Drips:\n- Norepinephrine\n- Vasopressin\n- Propofol\n- Fentanyl\n- Insulin gtt: 4 units/hr (BG 198 mg/dL)\n- Heparin gtt: 800 units/hr (PTT target 60-80s, last PTT 54s)\n\n### Lab Values:\n- ABG (05:30): pH 7.32, pCO2 48, pO2 72, HCO3 24, BE -2\n- P/F Ratio: 160 (moderate ARDS)\n\n### Diagnoses:\n- Septic shock 2/2 pneumonia, moderate ARDS\n- AKI Stage 2 (Cr 2.8, baseline 0.9)\n- DIC (plt 62K, fibrinogen 128, D-dimer >20)\n- Coagulopathy",
+        "latency_seconds": 22.6208,
+        "accuracy": {
+          "term_accuracy": 100.0,
+          "value_accuracy": 100.0,
+          "combined_accuracy": 100.0,
+          "terms_found": 19,
+          "terms_total": 19,
+          "terms_missed": [],
+          "values_found": 30,
+          "values_total": 30,
+          "values_missed": []
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 5671.03,
+          "reserved_mb": 7508.0,
+          "max_allocated_mb": 7388.28
+        }
+      },
+      {
+        "test_id": "eval_cardiology_consult",
+        "image": "eval_cardiology_consult.png",
+        "prompt": "Extract all echocardiographic measurements, catheterization findings, ECG findings, medications with dosages, and the management plan from this cardiology consultation.",
+        "response": "### Echocardiographic Measurements:\n- **Left Ventricular Ejection Fraction (LVEF):** 25%\n- **Left Ventricular End-Diastolic Diameter (LVEDD):** 6.2 cm\n- **Left Ventricular End-Systolic Diameter (LVESD):** 5.1 cm\n- **Grade III diastolic dysfunction (restrictive pattern)**\n- **Moderate mitral regurgitation (MR) (ERO 0.25 cm\u00b2)**\n- **Mild tricuspid regurgitation (TR)**\n- **Right Ventricular Systolic Pressure (RVSP):** 52 mmHg\n- **Global Longitudinal Strain (GLS):** -8.2% (severely reduced, normal < -18%)\n\n### Catheterization Findings:\n- **Left Main (LM):** 30% stenosis\n- **Left Anterior Descending Artery (LAD):** 90% proximal stenosis (culprit), stented with a 3.0x28mm DES\n- **Left Circumflex (LCx):** 50% mid stenosis\n- **Right Coronary Artery (RCA):** 70% stenosis\n- **Left Ventricular End-Diastolic Pressure (LVEDP):** 28 mmHg\n- **Pulmonary Capillary Wedge Pressure (PCWP):** 24 mmHg\n- **Cardiac Index (CI):** 1.8 L/min/m\u00b2\n\n### ECG Findings:\n- **Sinus Rhythm at 78 bpm**\n- **Left Bundle Branch Block (LBBB) (QRS 156 ms)**\n- **Left Axis Deviation (LAE)**\n- **Left Ventricular Hypertrophy (LVH) by voltage criteria**\n- **Q waves in V1-V3 (Old Anterior Myocardial Infarction [MI])**\n\n### Medications with Dosages:\n1. **Generalized Diabetes Mellitus Type II Therapy (GDMT) for Heart Failure with Reduced Ejection Fraction (HFrEF):**\n   - **Sacubitril/Valsartan:** 24/26 mg BID\n   - **Carvedilol:** 3.125 mg BID\n   - **Epleren",
+        "latency_seconds": 23.7766,
+        "accuracy": {
+          "term_accuracy": 71.43,
+          "value_accuracy": 69.23,
+          "combined_accuracy": 70.33,
+          "terms_found": 20,
+          "terms_total": 28,
+          "terms_missed": [
+            "CHF",
+            "CRT-D",
+            "DAPT",
+            "Dapagliflozin",
+            "Eplerenone",
+            "NSR",
+            "Rosuvastatin",
+            "Ticagrelor"
+          ],
+          "values_found": 18,
+          "values_total": 26,
+          "values_missed": [
+            "0.25 cm2",
+            "1.8 L/min/m2",
+            "10 mg",
+            "20 mg",
+            "81 mg",
+            "90 mg",
+            "QD",
+            "QHS"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 5671.03,
+          "reserved_mb": 7508.0,
+          "max_allocated_mb": 7388.28
+        }
+      },
+      {
+        "test_id": "eval_complex_lab_panel",
+        "image": "eval_complex_labs.png",
+        "prompt": "Extract every lab test with its result, units, reference range, and abnormal flag. Identify all critical values from this laboratory report.",
+        "response": "Here is the breakdown of the lab tests along with their results, units, reference ranges, and flags:\n\n### Complete Blood Count (CBC):\n- **WBC**: 2.1 K/uL | REF: 4.5-11.0 | FLAG: L (Low)\n- **RBC**: 3.12 M/uL | REF: 4.5-5.9 | FLAG: L (Low)\n- **Hemoglobin**: 8.4 g/dL | REF: 13.5-17.5 | FLAG: L (Low)\n- **Hematocrit**: 25.8 % | REF: 38.3-48.6 | FLAG: L (Low)\n- **MCV**: 82.7 fL | REF: 80-100 | FLAG: L (Low)\n- **Platelets**: 48 K/uL | REF: 150-400 | FLAG: L (Low)\n- **ANC**: 0.8 K/uL | REF: 1.5-8.0 | FLAG: L/C (Low/Critical)\n\n### Coagulation:\n- **PT**: 18.2 sec | REF: 11.0-13.5 | FLAG: H (High)\n- **INR**: 1.6 | REF: 0.9-1.1 | FLAG: H (High)\n- **PTT**: 42 sec | REF: 25-35 | FLAG: H (High)\n- **Fibrinogen**: 158 mg/dL | REF: 200-400 | FLAG: L (Low)\n- **D-Dimer**: 8.4 ug/mL FEU | REF: <0.50 | FLAG: H (High)\n\n### Hepatic Function:\n- **AST (SGOT)**: 142 U/L | REF: 10-40 | FLAG: H (High)\n- **ALT (SGPT)**: 198 U/L | REF: 7-56 | FLAG: H (High)\n- **ALP**: 312 U/L | REF: 44-147 | FLAG: H (High)\n- **GGT**: 245 U/L | REF: 8-61 | FLAG: H (High)\n",
+        "latency_seconds": 23.8882,
+        "accuracy": {
+          "term_accuracy": 81.82,
+          "value_accuracy": 84.0,
+          "combined_accuracy": 82.91,
+          "terms_found": 18,
+          "terms_total": 22,
+          "terms_missed": [
+            "Albumin",
+            "Bilirubin",
+            "LDH",
+            "neutropenic"
+          ],
+          "values_found": 21,
+          "values_total": 25,
+          "values_missed": [
+            "2.4",
+            "3.6",
+            "4.8",
+            "890"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 5671.03,
+          "reserved_mb": 7508.0,
+          "max_allocated_mb": 7388.28
+        }
+      },
+      {
+        "test_id": "eval_surgical_op_note",
+        "image": "eval_operative_note.png",
+        "prompt": "Extract the diagnoses, procedure details, operative findings with measurements, estimated blood loss, medications with dosages, and postoperative orders from this operative note.",
+        "response": "### Diagnoses:\n- Acute cholecystitis with choledolithiasis\n- Gangrenous cholecystitis\n\n### Procedure Details:\n- Laparoscopic cholecystectomy\n- Converted to open due to severe inflammation and unclear anatomy\n\n### Operative Findings:\n- Gallbladder: Distended, gangrenous wall, 2.1 cm impacted stone in Hartmann's pouch\n- Calot's triangle: Dense adhesions, critical view of safety NOT achieved laparoscopically\n- CBD (Common Bile Duct): 6 mm (normal), no stones on IOC\n- Liver: Mildly congested, no focal lesions\n\n### Estimated Blood Loss (EBL):\n- 250 mL\n\n### Duration:\n- 142 minutes\n\n### Fluids Administered:\n- LR (Lactated Ringer's) 2400 mL\n\n### Specimens:\n- Gallbladder sent to pathology (frozen + permanent)\n\n### Postoperative Orders:\n- NPO until flatus, then clear liquid diet\n- Morphine PCA: 1 mg Q6min, lockout 10mg/hr\n- Ketorolac 30 mg IV Q6H x 48hr (then PO ibuprofen)\n- Piperacillin/Tazobactam 4.5 g IV Q8H\n- Enoxaparin 40 mg SQ QD (DVT prophylaxis)\n- Ondansetron 4 mg IV Q6H PRN nausea\n- Incentive spirometry QIH while awake\n- Ambulate POD1, advance diet as tolerated",
+        "latency_seconds": 17.3719,
+        "accuracy": {
+          "term_accuracy": 85.71,
+          "value_accuracy": 94.74,
+          "combined_accuracy": 90.23,
+          "terms_found": 18,
+          "terms_total": 21,
+          "terms_missed": [
+            "ETT",
+            "FACS",
+            "cholelithiasis"
+          ],
+          "values_found": 18,
+          "values_total": 19,
+          "values_missed": [
+            "Q1H"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 5671.03,
+          "reserved_mb": 7508.0,
+          "max_allocated_mb": 7388.28
+        }
+      }
+    ],
+    "summary": {
+      "avg_latency_seconds": 22.4457,
+      "min_latency_seconds": 17.3719,
+      "max_latency_seconds": 24.5708,
+      "avg_term_accuracy_pct": 83.79,
+      "avg_value_accuracy_pct": 83.19,
+      "avg_combined_accuracy_pct": 83.49
+    }
+  },
+  "finetuned_model": {
+    "label": "Qwen2.5-VL-7B-Instruct (NF4 + LoRA merged)",
+    "adapter_path": "/home/sarathi/Downloads/quantization-pipe/models/qwen25-vl-7b-medical-lora",
+    "load_time_seconds": 92.73,
+    "vram_post_load_mb": {
+      "allocated_mb": 11335.83,
+      "reserved_mb": 14806.0,
+      "max_allocated_mb": 12894.35
+    },
+    "vram_peak_mb": {
+      "allocated_mb": 11335.84,
+      "reserved_mb": 14806.0,
+      "max_allocated_mb": 12894.35
+    },
+    "eval_results": [
+      {
+        "test_id": "eval_medication_reconciliation",
+        "image": "eval_med_reconciliation.png",
+        "prompt": "Extract every medication with its exact dosage, frequency, and indication. Also list all comorbidities and relevant lab values from this medication reconciliation form.",
+        "response": "### Medications:\n\n1. **Metoprolol Tartrate**  \n   - Dosage: 50 mg PO BID  \n   - Frequency: Twice daily (BID)  \n   - Indication: Hypertension (HTN), Atrial Fibrillation (AF)\n\n2. **Warfarin**  \n   - Dosage: 5 mg PO QHS  \n   - Frequency: Once in the evening (QHS)  \n   - Indication: Atrial Fibrillation (AF), INR goal range of 2.0-3.0\n\n3. **Furosemide**  \n   - Dosage: 80 mg PO QAM + 40 mg PO QPM  \n   - Frequency: Morning and evening (QAM, QPM)  \n   - Indication: Congestive Heart Failure (CHF)\n\n4. **Spironolactone**  \n   - Dosage: 25 mg PO QD  \n   - Frequency: Once daily (QD)  \n   - Indication: Congestive Heart Failure (CHF), Hyperkalemia (K+ 4.1 mEq/L)\n\n5. **Metformin**  \n   - Dosage: 1000 mg PO BID  \n   - Frequency: Twice daily (BID)  \n   - Indication: Diabetes Mellitus Type 2 (DM2), HbA1c 7.8%\n\n6. **Glipizide**  \n   - Dosage: 10 mg PO BID  \n   - Frequency: Twice daily (BID)  \n   - Indication: Diabetes Mellitus Type 2 (DM2)\n\n7. **Atorvastatin**  \n   - Dosage: 80 mg PO QHS  \n   - Frequency: Once in the evening (QHS)  \n   - Indication: Hyperlipidemia\n\n8. **Gabapentin**  \n   - Dosage: 300 mg PO TID  \n   - Frequency: Three times daily (TID)  \n   - Indication: Peripheral Neuropathy\n\n9. **Omeprazole**  \n   - Dosage: 20 mg PO QAM  \n   - Frequency: Morning (QAM)  \n   - Indication: Gastroesophageal Reflux Disease (GERD)\n\n10. **Albuterol MDI**  \n    - Dosage: 2 puffs Q4-",
+        "latency_seconds": 23.6629,
+        "accuracy": {
+          "term_accuracy": 80.0,
+          "value_accuracy": 68.0,
+          "combined_accuracy": 74.0,
+          "terms_found": 16,
+          "terms_total": 20,
+          "terms_missed": [
+            "CKD",
+            "COPD",
+            "Tiotropium",
+            "anaphylaxis"
+          ],
+          "values_found": 17,
+          "values_total": 25,
+          "values_missed": [
+            "18 mcg",
+            "BNP 580",
+            "BUN 32",
+            "Cr 1.6",
+            "EF 35%",
+            "INR 2.4",
+            "PRN",
+            "eGFR 38"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 11335.84,
+          "reserved_mb": 14806.0,
+          "max_allocated_mb": 12894.35
+        }
+      },
+      {
+        "test_id": "eval_icu_flowsheet",
+        "image": "eval_icu_flowsheet.png",
+        "prompt": "Extract all ventilator settings, hemodynamic parameters, drip rates, lab values, intake/output totals, and diagnoses from this ICU flowsheet.",
+        "response": "### Extracted Information from the ICU Flowsheet:\n\n#### Ventilator Settings:\n- **Mode:** SIMV/PS\n- **FiO2:** 0.45\n- **PEEP:** 8 cmH2O\n- **VT:** 450 mL\n- **RR set:** 14\n- **PS:** 10 cmH2O\n\n#### Hemodynamics (06:00):\n- **HR:** 112 bpm (sinus tach)\n- **MAP:** 62 mmHg\n- **CVP:** 14 mmHg\n- **ScvO2:** 68%\n- **Norepinephrine:** 0.15 mcg/kg/min (titrating for MAP >65)\n- **Vasopressin:** 0.04 units/min (fixed dose)\n\n#### Sedation / Analgesia:\n- **Propofol:** 30 mcg/kg/min\n- **RASS:** -3\n- **Fentanyl:** 75 mcg/hr\n- **CPOT:** 1\n\n#### I&O (last 12h):\n- **IN:** 2850 mL\n- **OUT:** 1200 mL\n- **NET:** +1650 mL\n- **UOP:** 25 mL/hr (oliguric, considering CRRT)\n\n#### Drips:\n- **Norepinephrine**\n- **Vasopressin**\n- **Propofol**\n- **Fentanyl**\n- **Insulin gtt:** 4 units/hr (BG 198 mg/dL)\n- **Heparin gtt:** 800 units/hr (PTT target 60-80s, last PTT 54s)\n\n#### Lab Values:\n- **ABG (05:30):**\n  - pH: 7.32\n  - pCO2: 48\n  - pO2: 72\n  - HCO3: 24\n  - BE: -2\n  - P/F Ratio: 160 (moderate ARDS)\n\n#### Diagnoses:\n- **Septic shock 2/2 pneumonia, moderate ARDS**\n- **AKI Stage 2 (Cr 2.8, baseline 0.9)**\n- **DIC (plt 6",
+        "latency_seconds": 23.7542,
+        "accuracy": {
+          "term_accuracy": 94.74,
+          "value_accuracy": 50.0,
+          "combined_accuracy": 72.37,
+          "terms_found": 18,
+          "terms_total": 19,
+          "terms_missed": [
+            "coagulopathy"
+          ],
+          "values_found": 15,
+          "values_total": 30,
+          "values_missed": [
+            "CPOT: 1",
+            "CVP: 14",
+            "D-dimer >20",
+            "FiO2: 0.45",
+            "HCO3 24",
+            "HR: 112",
+            "MAP: 62",
+            "PEEP: 8",
+            "RASS: -3",
+            "ScvO2: 68%",
+            "fibrinogen 128",
+            "pCO2 48",
+            "pH 7.32",
+            "pO2 72",
+            "plt 62K"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 11335.84,
+          "reserved_mb": 14806.0,
+          "max_allocated_mb": 12894.35
+        }
+      },
+      {
+        "test_id": "eval_cardiology_consult",
+        "image": "eval_cardiology_consult.png",
+        "prompt": "Extract all echocardiographic measurements, catheterization findings, ECG findings, medications with dosages, and the management plan from this cardiology consultation.",
+        "response": "### Echocardiographic Measurements:\n- **Left Ventricular Ejection Fraction (LVEF):** 25%\n- **Left Ventricle End-Diastolic Diameter (LVEDD):** 6.2 cm\n- **Left Ventricle End-Systolic Diameter (LVESD):** 5.1 cm\n- **Grade III diastolic dysfunction (restrictive pattern)**\n- **Moderate mitral regurgitation (MR) (ERO 0.25 cm\u00b2)**\n- **Mild tricuspid regurgitation (TR)**\n- **Right Ventricular Systolic Pressure (RVSP):** 52 mmHg\n- **Global Longitudinal Strain (GLS):** -8.2% (severely reduced, normal < -18%)\n\n### Catheterization Findings:\n- **Left Main (LM):** 30% stenosis\n- **Left Anterior Descending Artery (LAD):** 90% proximal stenosis (culprit), stented with a 3.0x28mm DES\n- **Left Circumflex (LCx):** 50% mid stenosis\n- **Right Coronary Artery (RCA):** 70% stenosis\n- **Left Ventricular End-Diastolic Pressure (LVEDP):** 28 mmHg\n- **Pulmonary Capillary Wedge Pressure (PCWP):** 24 mmHg\n- **Cardiac Index (CI):** 1.8 L/min/m\u00b2\n\n### Electrocardiogram (ECG) Findings:\n- **Sinus Rhythm at 78 bpm**\n- **Left Bundle Branch Block (LBBB) (QRS 156 ms)**\n- **Left Axis Deviation (LAE)**\n- **Left Ventricular Hypertrophy (LVH) by voltage criteria**\n- **Q waves in V1-V3 (old anterior MI)**\n\n### Medications with Dosages:\n1. **Generalized Diabetes Mellitus Type II Therapy (GDMT) for Heart Failure with Reduced Ejection Fraction (HFrEF):**\n   - **Sacubitril/Valsartan:** 24/26 mg BID\n   - **Carvedilol:** 3.125 mg BID\n   - **Epleren",
+        "latency_seconds": 23.882,
+        "accuracy": {
+          "term_accuracy": 71.43,
+          "value_accuracy": 69.23,
+          "combined_accuracy": 70.33,
+          "terms_found": 20,
+          "terms_total": 28,
+          "terms_missed": [
+            "CHF",
+            "CRT-D",
+            "DAPT",
+            "Dapagliflozin",
+            "Eplerenone",
+            "NSR",
+            "Rosuvastatin",
+            "Ticagrelor"
+          ],
+          "values_found": 18,
+          "values_total": 26,
+          "values_missed": [
+            "0.25 cm2",
+            "1.8 L/min/m2",
+            "10 mg",
+            "20 mg",
+            "81 mg",
+            "90 mg",
+            "QD",
+            "QHS"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 11335.84,
+          "reserved_mb": 14806.0,
+          "max_allocated_mb": 12894.35
+        }
+      },
+      {
+        "test_id": "eval_complex_lab_panel",
+        "image": "eval_complex_labs.png",
+        "prompt": "Extract every lab test with its result, units, reference range, and abnormal flag. Identify all critical values from this laboratory report.",
+        "response": "### Laboratory Results\n\n#### Hematology / Coagulation / Hepatic\n\n**Patient Information:**\n- Name: James P. Nakamura\n- Date of Birth (DOB): 12/05/1968\n- MRN: 5539201\n- Collection Date & Time: 01/24/2026 at 06:00 AM\n- Status: FINAL\n- Ordering Physician: Dr. S. Patel, MD (Oncology)\n\n---\n\n### Complete Blood Count (CBC):\n\n| TEST | RESULT | UNITS | REF | FLAG |\n|------|--------|-------|-----|------|\n| WBC   | 2.1    | K/uL  | 4.5-11.0 | L    |\n| RBC   | 3.12   | M/uL  | 4.5-5.9 | L    |\n| Hemoglobin | 8.4 | g/dL | 13.5-17.5 | L    |\n| Hematocrit | 25.8 | %    | 38.3-48.6 | L    |\n| MCV   | 82.7   | fL    | 80-100  | L    |\n| Platelets | 48 | K/uL | 150-400 | L    |\n| ANC   | 0.8    | K/uL  | 1.5-8.0 | L/C  |\n\n**Critical Values:**\n- ANC: 0.8 (neutropenic)\n- Platelets: 48K\n\n---\n\n### Coagulation:\n\n| TEST | RESULT | UNITS | REF | FLAG |\n|------|--------|-------|-----|------|\n| PT    | 18.2   | sec   | 11.0-13.5 | H    |\n| INR   | 1.6    |       | 0.9-1.1  | H    |\n| PTT   | 42     | sec   | 25-35   | H    |\n| Fibrinogen | 158 | mg/dL | 200-400 | L    |\n| D-Dimer | 8.4 | ug/mL FEU | <0.",
+        "latency_seconds": 23.8132,
+        "accuracy": {
+          "term_accuracy": 59.09,
+          "value_accuracy": 64.0,
+          "combined_accuracy": 61.55,
+          "terms_found": 13,
+          "terms_total": 22,
+          "terms_missed": [
+            "ALP",
+            "ALT",
+            "AST",
+            "Albumin",
+            "Bilirubin",
+            "GGT",
+            "LDH",
+            "SGOT",
+            "SGPT"
+          ],
+          "values_found": 16,
+          "values_total": 25,
+          "values_missed": [
+            "142",
+            "198",
+            "2.4",
+            "245",
+            "3.6",
+            "312",
+            "4.8",
+            "890",
+            "U/L"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 11335.84,
+          "reserved_mb": 14806.0,
+          "max_allocated_mb": 12894.35
+        }
+      },
+      {
+        "test_id": "eval_surgical_op_note",
+        "image": "eval_operative_note.png",
+        "prompt": "Extract the diagnoses, procedure details, operative findings with measurements, estimated blood loss, medications with dosages, and postoperative orders from this operative note.",
+        "response": "### Diagnoses:\n- Acute cholecystitis with choledolithiasis\n- Gangrenous cholecystitis\n\n### Procedure Details:\n- Laparoscopic cholecystectomy\n- Converted to open due to severe inflammation and unclear anatomy\n\n### Operative Findings:\n- Gallbladder: distended, gangrenous wall, 2.1 cm impacted stone in Hartmann's pouch\n- Calot's triangle: dense adhesions, critical view of safety NOT achieved laparoscopically\n- CBD: 6 mm (normal), no stones on IOC\n- Liver: mildly congested, no focal lesions\n\n### Estimated Blood Loss (EBL):\n- 250 mL\n\n### Duration:\n- 142 minutes\n\n### Fluids Administered:\n- LR 2400 mL\n\n### Specimens:\n- Gallbladder sent to pathology (frozen + permanent)\n\n### Postoperative Orders:\n- NPO until flatus, then clear liquid diet\n- Morphine PCA: 1 mg Q6min, lockout 10mg/hr\n- Ketorolac 30 mg IV Q6H x 48hr (then PO ibuprofen)\n- Piperacillin/Tazobactam 4.5 g IV Q8H\n- Enoxaparin 40 mg SQ QD (DVT prophylaxis)\n- Ondansetron 4 mg IV Q6H PRN nausea\n- Incentive spirometry QIH while awake\n- Ambulate POD1, advance diet as tolerated",
+        "latency_seconds": 16.8416,
+        "accuracy": {
+          "term_accuracy": 85.71,
+          "value_accuracy": 94.74,
+          "combined_accuracy": 90.23,
+          "terms_found": 18,
+          "terms_total": 21,
+          "terms_missed": [
+            "ETT",
+            "FACS",
+            "cholelithiasis"
+          ],
+          "values_found": 18,
+          "values_total": 19,
+          "values_missed": [
+            "Q1H"
+          ]
+        },
+        "gpu_memory_mb": {
+          "allocated_mb": 11335.84,
+          "reserved_mb": 14806.0,
+          "max_allocated_mb": 12894.35
+        }
+      }
+    ],
+    "summary": {
+      "avg_latency_seconds": 22.3908,
+      "min_latency_seconds": 16.8416,
+      "max_latency_seconds": 23.882,
+      "avg_term_accuracy_pct": 78.19,
+      "avg_value_accuracy_pct": 69.19,
+      "avg_combined_accuracy_pct": 73.7
+    }
+  },
+  "accuracy_delta": {
+    "term_accuracy_delta_pct": -5.6,
+    "value_accuracy_delta_pct": -14.0,
+    "combined_accuracy_delta_pct": -9.79
+  }
+}

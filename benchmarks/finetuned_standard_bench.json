@@ -1,0 +1,61 @@
+{
+  "model_name": "Qwen2.5-VL-7B-Instruct + LoRA (medical)",
+  "precision": "NF4 (bitsandbytes) + LoRA merged",
+  "adapter_path": "/home/sarathi/Downloads/quantization-pipe/models/qwen25-vl-7b-medical-lora",
+  "load_time_seconds": 92.73,
+  "vram": {
+    "pre_load_mb": {
+      "allocated_mb": 0.0,
+      "reserved_mb": 0.0,
+      "max_allocated_mb": 0.0
+    },
+    "post_load_mb": {
+      "allocated_mb": 11335.83,
+      "reserved_mb": 14806.0,
+      "max_allocated_mb": 12894.35
+    },
+    "peak_mb": {
+      "allocated_mb": 11335.84,
+      "reserved_mb": 14806.0,
+      "max_allocated_mb": 12894.35
+    }
+  },
+  "inference_results": [
+    {
+      "image": "patient_diagnosis.png",
+      "prompt": "Extract all medical diagnoses, medications with dosages, and vital signs from this patient assessment document.",
+      "response": "**Medical Diagnoses:**\n1. Acute coronary syndrome, NSTEMI - Troponin I 2.4 ng/mL\n2. Hypertension, uncontrolled\n3. Type 2 Diabetes Mellitus (HbA1c 8.2%)\n4. Chronic Kidney Disease, Stage 3 (eGFR 42 mL/min)\n\n**Medications Ordered:**\n- Aspirin 325 mg PO STAT, then 81 mg PO QD\n- Heparin 5000 units IV bolus, then 1000 units/hr\n- Metoprolol 25 mg PO BID\n- Lisinopril 10 mg PO QD\n- Metformin 1000 mg PO BID\n- Atorvastatin 80 mg PO QHS\n\n**Vital Signs:**\n- BP: 158/94 mmHg\n- HR: 102 bpm\n- RR: 22/min\n- Temp: 98.6\u00b0F\n- SpO2: 93% on RA\n- Weight: 198 lbs",
+      "latency_seconds": 13.2416
+    },
+    {
+      "image": "radiology_report.png",
+      "prompt": "List all findings from this radiology report including measurements, locations, and the radiologist's impression.",
+      "response": "### Findings:\n\n1. **Lungs:**\n   - 3.2 x 2.8 cm spiculated mass in the right upper lobe.\n   - Ipsilateral hilar lymphadenopathy measuring 1.8 cm.\n   - Left lung clear.\n   - No pleural effusion.\n\n2. **Mediastinum:**\n   - Subcarinal lymph node enlarged at 2.1 cm.\n   - No pericardial effusion.\n   - Heart size normal.\n\n3. **Bones:**\n   - Lytic lesion in T8 vertebral body, 1.2 cm, suspicious for metastatic disease.\n\n### Radiologist's Impression:\n1. Right upper lobe mass highly suspicious for primary bronchogenic carcinoma. LUNG-RAOS 4B.\n2. Ipsilateral hilar and subcarinal lymphadenopathy suggesting nodal metastasis (N2 disease).\n3. T8 lytic lesion concerning for osseous metastasis.\n\n### Recommendation:\nPET/CT and tissue biopsy recommended.",
+      "latency_seconds": 12.014
+    },
+    {
+      "image": "prescription.png",
+      "prompt": "Extract all prescribed medications with their dosages, directions, quantities, and refill counts from this prescription.",
+      "response": "Here is the breakdown of the prescribed medications:\n\n1. **Lisinopril 20 mg tablets**\n   - Dosage: 1 tablet by mouth once daily in the morning\n   - Quantity: #30\n   - Refills: 5\n\n2. **Amlodipine 5 mg tablets**\n   - Dosage: 1 tablet by mouth once daily\n   - Quantity: #30\n   - Refills: 5\n\n3. **Metformin 500 mg tablets**\n   - Dosage: 1 tablet by mouth twice daily with meals\n   - Quantity: #60\n   - Refills: 3\n\n4. **Atorvastatin 40 mg tablets**\n   - Dosage: 1 tablet by mouth at bedtime\n   - Quantity: #30\n   - Refills: 5\n\n5. **Pantoprazole 40 mg delayed-release tablets**\n   - Dosage: 1 tablet by mouth once daily 30 minutes before breakfast\n   - Quantity: #30\n   - Refills: 2",
+      "latency_seconds": 12.748
+    },
+    {
+      "image": "lab_results.png",
+      "prompt": "Extract all lab values with their results, units, reference ranges, and flags from this laboratory report.",
+      "response": "Here is the extracted information from the laboratory report:\n\n1. **Glucose, Fasting**: 142 mg/dL (Reference: 70-100 mg/dL) - Flag: H (High)\n2. **BUN**: 28 mg/dL (Reference: 7-20 mg/dL) - Flag: H (High)\n3. **Creatinine**: 1.8 mg/dL (Reference: 0.6-1.2 mg/dL) - Flag: H (High)\n4. **eGFR**: 38 mL/min (>60 mL/min) - Flag: L (Low)\n5. **Sodium**: 139 mEq/L (Reference: 136-145 mEq/L) - Flag: H (High)\n6. **Potassium**: 5.4 mEq/L (Reference: 3.5-5.1 mEq/L) - Flag: H (High)\n7. **Chloride**: 101 mEq/L (Reference: 98-106 mEq/L) - Flag: L (Low)\n8. **CO2**: 20 mEq/L (Reference: 23-29 mEq/L) - Flag: L (Low)\n9. **Calcium**: 9.2 mg/dL (Reference: 8.5-10.5 mg/dL) - Flag: H (High)\n10. **Total Protein**: 6.8 g/dL (Reference: 6.0-8.3 g/dL) - Flag: H (High)\n11. **Albumin**: 3.1 g/dL (Reference: 3.5-5.5 g/dL) - Flag: L (Low)\n12. **Bilirubin, Total**: 0.9 mg/dL (Reference: 0.1-1.2 mg/dL) - Flag: H (High)\n13. **Alk Phos**: 95 U/L (Reference: 44-147 U/L) - Flag: H (High)\n14. **AST (SGOT)**: 42 U/L (Reference: 10-40 U/L) - Flag: H (High)\n15. **ALT (SGPT)**: 58 U/L (Reference: 7",
+      "latency_seconds": 23.4649
+    },
+    {
+      "image": "discharge_summary.png",
+      "prompt": "Extract all diagnoses, medications with dosages, and follow-up instructions from this discharge summary.",
+      "response": "### Diagnoses:\n1. Community-acquired pneumonia (CAP), right lower lobe\n2. Acute on chronic systolic heart failure (EF 30%)\n3. Atrial fibrillation with RVR\n4. COPD exacerbation\n\n### Medications with Dosages:\n- Metoprolol Succinate: 50 mg PO QD\n- Furosemide: 40 mg PO BID\n- Potassium Chloride: 20 mEq PO BID\n- Apixaban: 5 mg PO BID\n- Lisinopril: 5 mg PO QD\n- Albuterol MDI: 2 puffs Q4-6H PRN\n- Prednisone taper: See above\n- Levofloxacin: 750 mg PO QD x 3 more days\n\n### Follow-Up Instructions:\n- PCP in 1 week.\n- Cardiology in 2 weeks.\n- Repeat CXR in 6 weeks.\n- Echo in 3 months.",
+      "latency_seconds": 12.0458
+    }
+  ],
+  "latency_stats": {
+    "avg_seconds": 14.7029,
+    "min_seconds": 12.014,
+    "max_seconds": 23.4649,
+    "p50_seconds": 12.748
+  }
+}
