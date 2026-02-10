@@ -93,6 +93,12 @@ quantization-pipe/
 |-- README.md                  # This file
 ```
 
+**[Full Deployment Guide](docs/DEPLOYMENT_GUIDE.md)** -- Detailed end-to-end deployment instructions with 10 sample clinical use cases, Docker setup, batch processing, troubleshooting, and production considerations.
+
+**[Complete Documentation](docs/COMPLETE_DOCUMENTATION.md)** -- Step-by-step documentation of every pipeline phase with all metrics, reproduction steps, and lessons learned.
+
+**[HuggingFace Model](https://huggingface.co/sarathi-balakrishnan/Qwen2.5-VL-7B-Medical-LoRA)** -- Fine-tuned LoRA adapter with comprehensive model card.
+
 ---
 
 ## Quick Start
